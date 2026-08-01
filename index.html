@@ -1,158 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>InfinitySoft</title>
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background: #f2f4f8;
-    padding: 20px;
+body{
+  font-family: Arial, sans-serif;
+  background:#111827;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  margin:0;
 }
-
-.container {
-    max-width: 420px;
-    margin: auto;
-    background: white;
-    padding: 25px;
-    border-radius: 20px;
+.container{
+  background:#1f2937;
+  padding:30px;
+  border-radius:15px;
+  width:90%;
+  max-width:350px;
+  text-align:center;
 }
-
-h1 {
-    text-align: center;
-    font-size: 38px;
+input,button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:8px;
+  border:0;
 }
-
-.subtitulo {
-    text-align: center;
-    color: #555;
-}
-
-input {
-    width: 100%;
-    padding: 14px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-}
-
-button {
-    width: 100%;
-    padding: 15px;
-    background: black;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 17px;
-    margin-top: 10px;
-}
-
-.box {
-    background: #f1f1f1;
-    padding: 15px;
-    margin-top: 20px;
-    border-radius: 12px;
+button{
+  background:#2563eb;
+  color:white;
+  font-size:16px;
 }
 </style>
-
 </head>
 
 <body>
 
 <div class="container">
-
 <h1>InfinitySoft</h1>
 
-<p class="subtitulo">
-Automação simples de vendas
-</p>
+<h3>Entrar</h3>
 
-<h3>Criar Automação</h3>
+<input id="email" type="email" placeholder="Seu e-mail">
 
-<input id="produto" placeholder="Nome do produto">
+<input id="senha" type="password" placeholder="Sua senha">
 
-<input id="palavra" placeholder="Palavra-chave (ex: quero)">
+<button onclick="login()">Entrar</button>
 
-<input id="link" placeholder="Link de compra">
+<button onclick="cadastro()">Criar conta</button>
 
-<button onclick="ativar()">
-Ativar Automação
-</button>
-
-
-<div class="box">
-
-<h3>Teste da automação</h3>
-
-<input id="teste" placeholder="Digite a palavra-chave">
-
-<button onclick="responder()">
-Enviar
-</button>
-
-<p id="resultado"></p>
-
+<p id="mensagem"></p>
 </div>
 
 
-<div class="box">
+<script type="module">
 
-Status:
-<br>
-🟢 Sistema pronto
-
-</div>
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 
-</div>
+const firebaseConfig = {
+  // COLOQUE A CONFIGURAÇÃO DO FIREBASE AQUI
+};
 
 
-<script>
-
-let produto = "";
-let palavra = "";
-let link = "";
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 
-function ativar(){
+window.cadastro = function(){
 
-produto = document.getElementById("produto").value;
-palavra = document.getElementById("palavra").value.toLowerCase();
-link = document.getElementById("link").value;
+let email=document.getElementById("email").value;
+let senha=document.getElementById("senha").value;
 
-
-alert("Automação ativada!");
+createUserWithEmailAndPassword(auth,email,senha)
+.then(()=>{
+document.getElementById("mensagem").innerHTML="Conta criada com sucesso!";
+})
+.catch(()=>{
+document.getElementById("mensagem").innerHTML="Erro ao criar conta";
+});
 
 }
 
 
-function responder(){
+window.login = function(){
 
-let mensagem =
-document.getElementById("teste").value.toLowerCase();
+let email=document.getElementById("email").value;
+let senha=document.getElementById("senha").value;
 
-
-if(mensagem == palavra && palavra != ""){
-
-document.getElementById("resultado").innerHTML =
-"Olá! Obrigado pelo interesse em " + produto +
-"<br><br>Acesse o link de compra:<br>" +
-link;
-
-}
-
-else{
-
-document.getElementById("resultado").innerHTML =
-"Palavra não reconhecida.";
-
-}
+signInWithEmailAndPassword(auth,email,senha)
+.then(()=>{
+document.getElementById("mensagem").innerHTML="Login realizado!";
+})
+.catch(()=>{
+document.getElementById("mensagem").innerHTML="Dados incorretos";
+});
 
 }
 
 </script>
-
 
 </body>
 </html>
