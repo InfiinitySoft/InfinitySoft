@@ -102,4 +102,35 @@ Será enviado o link do produto.
 </div>
 
 </body>
+    <h3>Teste da automação</h3>
+
+<input id="mensagem" placeholder="Digite uma palavra">
+
+<button onclick="responder()">
+Enviar mensagem
+</button>
+
+<div id="resposta" class="resultado"></div>
+
+<script>
+function responder(){
+
+let palavra = document.getElementById("mensagem").value;
+
+if(palavra.toLowerCase() == "quero"){
+
+document.getElementById("resposta").innerHTML =
+"Obrigado pelo interesse!<br><br>Segue o link do produto.";
+
+}
+
+else{
+
+document.getElementById("resposta").innerHTML =
+"Palavra não reconhecida.";
+
+}
+
+}
+</script>
 </html>
