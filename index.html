@@ -1,28 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>InfinitySoft</title>
-    <link rel="stylesheet" href="style.css">
+<title>InfinitySoft</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    text-align: center;
+    padding: 30px;
+}
+
+.container {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 400px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 38px;
+}
+
+p {
+    color: #555;
+}
+
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background: black;
+    color: white;
+    padding: 15px;
+    width: 95%;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.resultado {
+    margin-top: 20px;
+    background: #eee;
+    padding: 15px;
+    border-radius: 10px;
+}
+</style>
+
 </head>
 
 <body>
 
+<div class="container">
+
 <h1>InfinitySoft</h1>
 
-<h2>Automatize suas vendas de forma simples.</h2>
+<p>
+Automatize suas vendas de forma simples.
+</p>
 
-<p>Crie sua primeira automação:</p>
+<h3>Criar Automação</h3>
 
-<label>Produto:</label><br>
-<input type="text"><br><br>
+<input placeholder="Nome do produto">
 
-<label>Palavra-chave:</label><br>
-<input type="text" placeholder="Ex: quero"><br><br>
+<input placeholder="Palavra-chave (ex: quero)">
 
-<label>Link do produto:</label><br>
-<input type="text"><br><br>
+<input placeholder="Link do produto">
 
-<button>Ativar automação</button>
+<button>
+Ativar Automação
+</button>
+
+
+<div class="resultado">
+
+Automação pronta:
+<br><br>
+
+Quando alguém enviar:
+<b>quero</b>
+
+<br><br>
+
+Será enviado o link do produto.
+
+</div>
+
+</div>
 
 </body>
 </html>
