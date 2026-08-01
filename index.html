@@ -4,59 +4,55 @@
 <title>InfinitySoft</title>
 
 <style>
-    <script>
-function ativar(){
-
-alert("Automação ativada com sucesso!");
-
-}
-</script>
 body {
     font-family: Arial, sans-serif;
-    background: #f4f6f8;
-    text-align: center;
-    padding: 30px;
+    background: #f2f4f8;
+    padding: 20px;
 }
 
 .container {
+    max-width: 420px;
+    margin: auto;
     background: white;
     padding: 25px;
-    border-radius: 15px;
-    max-width: 400px;
-    margin: auto;
+    border-radius: 20px;
 }
 
 h1 {
+    text-align: center;
     font-size: 38px;
 }
 
-p {
+.subtitulo {
+    text-align: center;
     color: #555;
 }
 
 input {
-    width: 90%;
-    padding: 12px;
-    margin: 8px;
-    border-radius: 8px;
+    width: 100%;
+    padding: 14px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 10px;
     border: 1px solid #ccc;
 }
 
 button {
+    width: 100%;
+    padding: 15px;
     background: black;
     color: white;
-    padding: 15px;
-    width: 95%;
     border: none;
     border-radius: 10px;
-    font-size: 18px;
+    font-size: 17px;
+    margin-top: 10px;
 }
 
-.resultado {
-    margin-top: 20px;
-    background: #eee;
+.box {
+    background: #f1f1f1;
     padding: 15px;
-    border-radius: 10px;
+    margin-top: 20px;
+    border-radius: 12px;
 }
 </style>
 
@@ -68,69 +64,95 @@ button {
 
 <h1>InfinitySoft</h1>
 
-<p>
-Automatize suas vendas de forma simples.
+<p class="subtitulo">
+Automação simples de vendas
 </p>
 
 <h3>Criar Automação</h3>
 
-<input placeholder="Nome do produto">
+<input id="produto" placeholder="Nome do produto">
 
-<input placeholder="Palavra-chave (ex: quero)">
+<input id="palavra" placeholder="Palavra-chave (ex: quero)">
 
-<input placeholder="Link do produto">
+<input id="link" placeholder="Link de compra">
 
 <button onclick="ativar()">
 Ativar Automação
 </button>
 
 
-<div class="resultado">
+<div class="box">
 
-Automação pronta:
-<br><br>
+<h3>Teste da automação</h3>
 
-Quando alguém enviar:
-<b>quero</b>
-
-<br><br>
-
-Será enviado o link do produto.
-
-</div>
-
-</div>
-
-</body>
-    <h3>Teste da automação</h3>
-
-<input id="mensagem" placeholder="Digite uma palavra">
+<input id="teste" placeholder="Digite a palavra-chave">
 
 <button onclick="responder()">
-Enviar mensagem
+Enviar
 </button>
 
-<div id="resposta" class="resultado"></div>
+<p id="resultado"></p>
+
+</div>
+
+
+<div class="box">
+
+Status:
+<br>
+🟢 Sistema pronto
+
+</div>
+
+
+</div>
+
 
 <script>
+
+let produto = "";
+let palavra = "";
+let link = "";
+
+
+function ativar(){
+
+produto = document.getElementById("produto").value;
+palavra = document.getElementById("palavra").value.toLowerCase();
+link = document.getElementById("link").value;
+
+
+alert("Automação ativada!");
+
+}
+
+
 function responder(){
 
-let palavra = document.getElementById("mensagem").value;
+let mensagem =
+document.getElementById("teste").value.toLowerCase();
 
-if(palavra.toLowerCase() == "quero"){
 
-document.getElementById("resposta").innerHTML =
-"Obrigado pelo interesse!<br><br>Segue o link do produto.";
+if(mensagem == palavra && palavra != ""){
+
+document.getElementById("resultado").innerHTML =
+"Olá! Obrigado pelo interesse em " + produto +
+"<br><br>Acesse o link de compra:<br>" +
+link;
 
 }
 
 else{
 
-document.getElementById("resposta").innerHTML =
+document.getElementById("resultado").innerHTML =
 "Palavra não reconhecida.";
 
 }
 
 }
+
 </script>
+
+
+</body>
 </html>
